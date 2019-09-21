@@ -1,0 +1,183 @@
+
+
+<!-- my code -->
+<!-- <div class="container" >
+  <div class="panel panel-default upload-drop-zone" id="drop-zone" >
+    <div class="panel-body">
+        <img width="140" alt="Angular Logo" [src]="'assets/img/uploadcloud.png'"/>
+        <br>
+        <button type="button" class="btn btn-success cls">Choose Files To Upload</button>
+        <br>
+        <h3>or drag and drop them here</h3>
+    </div>
+  </div> -->
+  <notifier-container></notifier-container>
+
+  <div class="container" >
+      <!-- (messageEvent)="receiveMessage($event)"> -->
+      <app-temp (messageEvent)="fn_receive($event)"></app-temp>
+<div class="row">
+
+<div class="row col-md-4 col-lg-4 col-sm-4 col-xs-4">
+<tr>
+<th style="font-size: large;font-weight: 500; color:navy;white-space: nowrap;">Uploaded Files</th>
+
+<th><input type="text" name="searchText" class="search" placeholder="Search..." [(ngModel)]="searchText"></th>
+
+
+<th class="right">
+  <button [ngClass]="{'disabled': isFileSelected==false}" type="button"  (click)="downloadFiles()" class="btn btn-success bcls b1"  style="margin-left: 15vw;"  >Download</button>
+</th>
+<th><button [ngClass]="{'disabled': isFileSelected==false}" type="button" data-toggle="modal" data-target="#deleteConfirmMultiModal"  class="btn btn-success bcls b2">Delete</button></th>
+<th><button [ngClass]="{'disabled': isFileSelected==false}" type="button" data-toggle="modal" data-target="#shareMultiModal" class="btn btn-success bcls b3">Share</button></th>
+</tr >
+</div>
+</div>
+<br><br><br>
+
+<!-- table -->
+<table class="table table-striped table-hover" style="width: 100%; min-height: 300px;" id="gridQ1">
+  <thead style="background-color: white;">
+      <tr>
+          <th style="width: 5px;">
+              <input type="checkbox" (change)="checkUncheckAllFiles()" [(ngModel)]="isCheckedAll" #checkbox name="checkall" />
+          </th>
+          <th class="c_id" rowspan="2">File Name</th>
+          <th class="c_name" rowspan="2">File Size</th>
+          <th class="c_size" rowspan="2">Last Modified</th>
+          <th class="c_activity" rowspan="2">Activity</th>
+          <!-- <th colspan="3" class="center border_bottom0">JAN <label id='lblYear'></label></th>
+          <th colspan="3" class="center border_bottom0">FEB <label id='lblYear1'></label></th>
+          <th colspan="3" class="center border_bottom0">MAR <label id='lblYear2'></label></th>
+          <th colspan="3" class="center border_bottom0">TOTAL Q1</th> -->
+      </tr>
+      </thead>
+      <tbody>
+<ng-container *ngIf="data.length!=0 else noRecordFound">
+        <tr *ngFor="let e of data | filter :searchText">
+
+          <td>
+            <input type="checkbox" [(ngModel)]="e.isChecked" (change)="checkUncheckFiles()" #checkbox name="checkbox[n]" />
+          </td>
+          <td>{{ e.fileName }}</td>
+          <td>{{ e.filesize }}</td>
+          <td>{{ e.lastmod }}</td>
+          <td>
+              <button type="button" (click)="open(e)" data-toggle="modal" data-target="#shareModal" class="btn btn-success btab1"></button>&nbsp;
+              <button type="button" (click)="fn_downloadFile(e.fileName)" class="btn btn-success btab2"></button>&nbsp;
+              <button type="button" (click)="fn_confirmDelete(e.fileName)" data-toggle="modal" data-target="#deleteConfirmModal" class="btn btn-success btab3"></button>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-template #noRecordFound>
+        <tr class="col-md-12">
+          <td colspan="5" style="text-align:center">No Record To Display</td>
+        </tr>
+      </ng-template>
+      </tbody>
+      </table>
+    </div>
+
+
+    <!-- Modal -->
+<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="shareModalLabel">share {{shareFilename}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <input type="password" placeholder='Enter your Cognizant password to send mail' class="form-control" #cognipassword1 />&nbsp;
+        <input type="text" placeholder='Enter Associate ID of file recipient' class="form-control" #shareid1 />
+
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+        <button type="button" (click)="shareFiles(cognipassword1.value,shareid1.value)" class="close" data-dismiss="modal" class="btn btn-primary">Share</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="deleteConfirmModalLabel">Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to delete this file?</p>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+        <button type="button"  class="close" data-dismiss="modal" class="btn btn-primary">Cancel</button>
+        <button type="button" (click)="fn_Delete()" class="close" data-dismiss="modal" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteConfirmMultiModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmMultiModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="deleteConfirmMultiModalLabel">Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure to delete these files?</p>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+          <button type="button"  class="close" data-dismiss="modal" class="btn btn-primary">Cancel</button>
+          <button type="button" (click)="deleteFiles()" class="close" data-dismiss="modal" class="btn btn-primary">Delete All</button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="shareMultiModal" tabindex="-1" role="dialog" aria-labelledby="shareMultiModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="shareMultiModal">Sharing Multiple Files</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <input type="password" placeholder='Enter your Cognizant password to send mail' class="form-control" #cognipassword />&nbsp;
+              <input type="text" placeholder='Enter Associate ID of file recipient' class="form-control" #shareid />
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button type="button"  class="close" data-dismiss="modal" class="btn btn-primary">Cancel</button>
+            <button type="button" (click)="shareFiles(cognipassword.value,shareid.value)" class="close" data-dismiss="modal" class="btn btn-primary">Share</button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+    </div>
+

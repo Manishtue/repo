@@ -1,0 +1,47 @@
+.bg1-img {
+  background: url('../../assets/img/LoginBg.jpg') no-repeat;
+   background-size: cover;
+   width:100vw;
+   height: 70vh;
+}
+
+/* .palette{
+  background-color:darkblue;
+  color:white;
+  width: 25%;
+  left: 100px;
+  min-width: 360px;;
+
+} */
+
+.user{
+  background: url(../../assets/img/username-new-icon.png)#c0c0c0 no-repeat scroll 7px 7px;
+    padding-left: 25px;
+    background-size: 10px;
+    /* height: 25px; */
+    border-radius: 2px;
+}
+
+.pwd{
+  background: url(../../assets/img/password-new-icon.png)#c0c0c0 no-repeat scroll 7px 7px;
+  padding-left: 25px;
+  background-size: 10px;
+  /* height: 25px; */
+  border-radius: 2px;
+}
+
+.loginButton{
+  width:100%;
+  background-color: green;
+}
+
+.foot{
+ position: fixed;
+ bottom: 0;
+ text-align: center;
+ color: white;
+ padding-left: 70vh;
+}
+
+
+

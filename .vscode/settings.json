@@ -1,0 +1,4 @@
+{
+    "appService.deploySubpath": "dist\\file-sharing",
+    "appService.defaultWebAppToDeploy": "/subscriptions/25e4e4f0-a33f-4c08-9c69-106898e202c9/resourceGroups/FilesManager/providers/Microsoft.Web/sites/filemanagerportal"
+}

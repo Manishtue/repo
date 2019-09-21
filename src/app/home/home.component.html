@@ -1,0 +1,49 @@
+<!-- Card -->
+<!-- background-image: url(assets/img/background.jpg); -->
+
+<div class="loading" [ngClass]="{'hideLoading': isLoading==false,'showLoading': isLoading==true}" >Loading...</div>
+<div class="card card-image" style="background-color: #dae6e6;" >
+  <!---->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height:10vh; margin-bottom: 6vh;">
+  <a class="navbar-brand">
+     <!-- <img width="30" alt="Angular Logo" [src]="'assets/img/docicon.png'"/>-->
+      <a class="nav-link" href="#"><h1 style="color: navy;">File Sharing</h1></a>
+  </a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+          <a class="nav-link" href="#">My Files</a>
+             </li>
+       <li class="nav-item">
+          <a class="nav-link" href="#">Shared Files</a>
+      </li>
+      <!-- <li class="nav-item">
+          <a class="nav-link" >{{data}}</a>
+      </li> -->
+      <li class="nav-item">
+          <a class="nav-link"><img width="27"  alt="Angular Logo" [src]="'assets/img/iconuser.png'"/></a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+     <div >
+      <label for="name" style="margin-left: 1vw;" class="control-label col-xs-12 col-sm-12 col-md-3"data-toggle="tooltip" data-placement="bottom" title="Logged in User"> {{_user}}</label>
+     </div>
+     <a href="#" (click)="logout()">
+        <i class="fa fa-sign-out fa-2x" data-toggle="tooltip" data-placement="bottom" title="Logout" style="color:gray; margin-right: 2vw;"aria-hidden="true"></i>
+      </a>
+      </form>
+  </div>
+</nav>
+<div>
+
+<app-grid (isLoadingevent)="fn_isLoading($event)" ></app-grid>
+
+</div>
+
+
+
+

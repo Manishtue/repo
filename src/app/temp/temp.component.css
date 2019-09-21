@@ -1,0 +1,132 @@
+
+/* .my-drop-zone { border: dotted 3px lightgray; } */
+/* Default class applied to drop zones on over */
+.invalid-drag { border: dotted 3px red; }
+.valid-drag { border: dotted 3px green; }
+html, body { height: 100%; }
+.previewIcon{
+  width:100px;height:100px;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+
+input[type=file] {
+  display: inline-block;
+  width: 17vw;
+  padding: 6vh 0 0 0;
+  height: 0vh;
+  overflow: hidden;
+  background: darkgreen;
+  border-radius: 20px;
+  background-size: 60px 60px;
+  cursor: pointer;
+  margin-bottom: -6vh;
+}
+
+
+.inline-block{
+  display:inline-block;
+  margin:.2em;
+}
+
+/* @import '/node_modules/ag-grid-community/dist/styles/ag-grid.css';
+@import './node_modules/ag-grid-community/dist/styles/ag-theme-balham.css'; */
+
+.table-operations {
+  margin-bottom: 16px;
+}
+
+.table-operations > button {
+  margin-right: 8px;
+}
+
+.search{
+  background: url(../../assets/img/iconsearch.png) no-repeat ;
+  background-size: 22px;
+  background-color: white;
+  background-position: right;
+  /* height: 25px; */
+  border-radius: 2px;
+  margin-left: 3vw;
+  padding-right: 2vw;
+  border: 1px solid grey;
+  height: 5vh;
+}
+
+/* layout.css Style */
+/* .upload-drop-zone {
+   height: 230px;
+  border-width: 2px;
+
+} */
+
+/* skin.css Style*/
+
+/*
+.upload-drop-zone.drop {
+  color: #222;
+  border-color: #222;
+} */
+.cls{
+  height: 40px;
+  font-size: small;
+  border-radius: 25px;
+}
+
+.bcls{
+  height: 35px;
+  font-size: small;
+  border-radius: 5px;
+  color: green;
+  background-color: white;
+  border-color: green;
+  font-weight: 500;
+  margin-right: 1vw;
+}
+
+.b1{
+  background: url(../../assets/img/icondownload.png) no-repeat ;
+  background-size: 22px;
+  background-color: white;
+  padding-right: vw;
+  padding-left: 3vw;
+  background-position: 7px 7px;
+  }
+
+.b2{
+  background: url(../../assets/img/icondelete.png) no-repeat ;
+  background-size: 22px;
+  background-color: white;
+  padding-right: vw;
+  padding-left: 3vw;
+  background-position: 7px 7px;
+    }
+
+.b3{
+  background: url(../../assets/img/iconshare.png) no-repeat ;
+  background-size: 22px;
+  background-color: white;
+  padding-right: vw;
+  padding-left: 3vw;
+  background-position: 7px 7px;
+      }
+
+ table, td {
+  border: 1px solid#dddddd;;
+}
+
+.my-drop-zone {
+  border-width:  3px !important;
+  color: #ccc !important;
+  text-align: center !important;
+  padding: 0px !important;
+  margin-bottom: 20px !important;
+  border-style: dashed
+}
+
+.panel
+{
+  margin-bottom: 0px !important;
+  border: none !important;
+}
+

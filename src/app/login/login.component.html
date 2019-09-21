@@ -1,0 +1,34 @@
+<div class="bg1-img">
+
+  <div class="myrow  col-xs-10 col-sm-10  col-md-12 col-lg-12">
+    <div class="col-xs-4 col-sm-4  col-md-3 col-lg-4" style="margin-top: 30vh;color:white; padding-top: 1vh; background-color: navy; margin-left: 10vw; margin-right: 15vw;">
+      <h5 class="card-title" style="color: white; font-size: medium; text-align: center">SIGN IN TO COGNIZANT FILE
+        SHARE</h5>
+      <div class="form-group ">
+        <!-- <label for="username">Username</label> -->
+        <input type="text" class="form-control user" id="username" placeholder="Username" required [(ngModel)]="User.UserId"
+          name="username" />
+        <!--{{User.UserId}} -->
+      </div>
+      <div class="form-group">
+        <!-- <label for="password">Password</label> -->
+        <input type="password" class="form-control pwd" id="password" placeholder="Password" required [(ngModel)]="User.UserPassword"
+          name="password" />
+      </div>
+      <button type="submit" class="btn btn-primary loginButton" (click)="Login()">LOG ON</button>
+      <br><br>
+      <div style="text-align: center">FORGOT PASSWORD/UNLOCK ACCOUNT?</div>
+      <div style="text-align: center; font-size: x-small;">If you have difficulties with sign in, you can login to
+        <a href="https://identity.cognizant.com/">Identity Portal</a> using your identity
+        credentials to reset your network password and unlock your account online.
+      </div>
+    </div>
+  </div>
+
+  <h5 class="foot" style="text-align: center;">
+    © {{footyear}} Cognizant Technology Solutions Limited, All Rights Reserved
+  </h5>
+</div>
+
+<router-outlet></router-outlet>
+

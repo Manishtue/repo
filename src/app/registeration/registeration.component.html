@@ -1,0 +1,33 @@
+<notifier-container></notifier-container>
+<div class="loading" [ngClass]="{'hideLoading': loading==false,'showLoading': loading==true}">Loading...</div>
+<div class='bg-img'>
+    <!-- <div [ngStyle]="{background: 'url(../../../../assets/img/LoginBg.jpg)'}"> -->
+  <div id="login-box">
+
+    <!-- <div *ngIf="this.userResult == true"  class="right">
+      <h1>Sign In</h1>
+
+  <input type="text" name="userid" id="userid1" tabindex="1" class="form-control" placeholder="Enter Token"
+        value="" required [(ngModel)]="vartoken" >
+        <input type="password" name="password" id="password1" tabindex="1" class="form-control" placeholder="Password"
+        value="" required [(ngModel)]="User.UserPassword" >
+        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Associate Name"
+        value="" required [(ngModel)]="User.UserName" >
+        <button class="submit" (click)='validatetoken()' >Login</button>
+    </div> -->
+
+    <div class="left">
+      <h1>File Share</h1>
+      <input type="text" name="userid" id="userid2" tabindex="1" class="form-control" placeholder="Associate ID" value=""
+        required (keyup)="validateuser($event)" appSixDigitAllowed>
+      <!-- <i class=" inline-block fa fa-angle-double-right fa-2x" style="color: white;" (click)="token()" data-toggle="tooltip" data-placement="bottom" title="Generate token"></i> -->
+      <input type="text" [ngClass]="{'disabled': ischecked == false}" name="token" id="password2" tabindex="1" class="form-control"
+        placeholder="Email Token" value="" required [(ngModel)]="vartoken">
+      <button [ngClass]="{'disabled': ischecked == false}" (click)="validatetoken()" class='submit'>Login</button>
+
+      <!-- </div>
+    <div class="or">OR</div>
+  </div> -->
+    </div>
+  </div>
+</div>
